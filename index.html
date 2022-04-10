@@ -13,41 +13,26 @@
     <h1>todo</h1>
     <!-- input box -->
     <div class="input-box">
+      <label for="user-input"></label>
       <input type="text" name="user-input" id="user-input">
-      <button>submit</button>
+      <button class="submit-btn">submit</button>
     </div>
     <!-- todo list -->
     <div class="todo-container">
-      <article class="todo">
-        <p><input type="checkbox"><span>clean the house
+      <!-- <article class="todo">
+        <p>
+          <input type="checkbox">
+          <span>clean the house
         </span>
       </p>
         <button class="actions">
           <i class="fa-solid fa-pen fa-green"></i>
           <i class="fa-solid fa-trash-can"></i>
         </button>
-      </article>
-
-      <article class="todo">
-        <p><input type="checkbox"><span>clean the house
-        </span>
-        </p>
-        <button class="actions">
-          <i class="fa-solid fa-pen fa-green"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </button>
-      </article>
-      <article class="todo">
-        <p><input type="checkbox"><span>clean the house
-        </span>
-      </p>
-        <button class="actions">
-          <i class="fa-solid fa-pen fa-green"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </button>
-      </article>
+      </article> -->
+      <p class="no-task-alert">you have no tasks</p>
     </div>
-    <button id="clear-all">clear all</button>
+    <button class="remove-clear-all">clear all</button>
   </main>
   <script src="./app.js"></script>
 </body>
