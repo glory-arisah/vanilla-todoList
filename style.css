@@ -1,0 +1,123 @@
+.fa-pen {
+  color: rgb(54, 190, 54);
+  cursor: pointer;
+  font-size: 1rem;
+}
+.fa-trash-can {
+  color: rgb(180, 26, 26);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  background-color: #EBE9E9;
+  background-image: url('todo-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  background-color:rgba(0, 9, 9, 1);
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .4);
+}
+
+.main {
+  z-index: 2;
+  background: rgb(90, 90, 90, 0.6);
+  padding: 1.5rem 1rem 1rem 1rem;
+  min-height: 50vh;
+  width: 50vw;
+  margin: auto;
+  border-radius: 2%;
+}
+.main > h1 {
+  text-transform: capitalize;
+  /* margin-bottom: 2rem; */
+  text-align: center;
+}
+
+.input-box {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 0
+}
+.input-box > button {
+  background-color: #6CCFF6;
+  border: 1px solid rgb(238, 234, 234);
+  text-transform: capitalize;
+  color: white;
+  font-size: .9rem;
+  height: 2rem;
+  padding: 0 1.3rem;
+  cursor: pointer;
+}
+.input-box > input {
+  border-radius: 5px;
+  padding: 0 .3rem;
+  border: 1px solid rgb(202, 202, 202);
+  font-size: .8rem;
+}
+
+.todo:nth-child(1) {
+  margin-bottom: .3rem;
+}
+.todo {
+  margin: .7rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.todo span {
+  margin-left: .5rem;
+}
+
+.actions {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  width: 15%;
+  justify-content: space-between;
+}
+input[type='checkbox']:checked + span {
+  text-decoration: line-through;
+}
+
+#clear-all {
+  display: block;
+  margin: 2rem auto 0 auto;
+  border: none;
+  padding: .6rem 1.3rem;
+  border-radius: 10px;
+  font-size: .8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  background-color: rgb(202, 195, 195);
+  color: rgb(194, 132, 132);
+  cursor: pointer;
+  transition: color 0.5s ;
+}
+
+#clear-all:hover {
+  transition: .8s all;
+  background-color: rgb(194, 132, 132);
+  color: rgb(202, 195, 195);
+  transform: scale(1.1);
+}
+
+.remove-clear-all {
+  display: none;
+}
