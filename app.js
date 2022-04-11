@@ -92,7 +92,11 @@ const createTodo = () => {
   let value = userInput.value
   let id = new Date().getTime().toString()
 
-  if (editFlag && value) {
+  if (!editFlag && value) {
+    populateTodo(id, value)
+    addToLocalStorage(id, value)
+  }
+  else if (editFlag && value) {
     editElement.textContent = value
     updateLocalStorage(editId, value)
     userInput.value = ''
@@ -100,7 +104,23 @@ const createTodo = () => {
     editFlag = false
     editId = ''
   }
-  else if (!editFlag && value) {
+  else if (!editFlag && !value) {
+    noTaskAlert.textContent = 'Please enter a value'
+  }
+}
+
+// EVENTS
+submitBtn.addEventListener('click', createTodo)
+clearAllBtn.addEventListener('click', clearAll)
+userInput.addEventListener('keyup', (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault()
+    submitBtn.click()
+  }
+})
+
+// load contents in localStorage on DOMContentLoaded
+function populateTodo(id, value)  {
   const article = document.createElement('article')
   article.classList.add('todo')
   article.setAttribute('data-id', id)
@@ -117,26 +137,19 @@ const createTodo = () => {
   todoContainer.appendChild(article)
   clearAllBtn.classList.add('clear-all')
   noTaskAlert.style.display = 'none'
-  let deleteBtn = article.querySelector('.fa-trash-can')
-  let editBtn = article.querySelector('.fa-pen')
+  const deleteBtn = article.querySelector('.fa-trash-can')
+  const editBtn = article.querySelector('.fa-pen')
 
   deleteBtn.addEventListener('click', deleteTodo)
   editBtn.addEventListener('click', editTodo)
-  addToLocalStorage(id, value)
   userInput.value = ''
-  }
-  else if (!editFlag && !value) {
-    noTaskAlert.textContent = 'Please enter a value'
-  }
-  
 }
 
-// EVENTS
-submitBtn.addEventListener('click', createTodo)
-clearAllBtn.addEventListener('click', clearAll)
-userInput.addEventListener('keyup', (e) => {
-  if (e.keyCode === 13) {
-    e.preventDefault()
-    submitBtn.click()
+window.addEventListener('DOMContentLoaded', () => {
+  let todos = getTodos()
+  if (todos.length > 0) {
+    todos.forEach(todo => {
+      return populateTodo(todo.id, todo.value)
+    })
   }
 })
