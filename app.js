@@ -10,9 +10,11 @@ let editId = ''
 let editElement
 
 // LOCALSTORAGE FUNCTIONS
+// get all the todo tasks stored in localStorage
 const getTodos = () => {
   return localStorage.getItem('todoList') ? JSON.parse(localStorage.getItem('todoList')) : []
 }
+// add user todos to localStorage
 const addToLocalStorage = (id, value) => {
   let todoParams = {id, value}
   // fetch items in localStorage todoList property
@@ -23,9 +25,9 @@ const addToLocalStorage = (id, value) => {
   localStorage.setItem('todoList', JSON.stringify(todoList))
 }
 
+// update a todo in localStorage
 const updateLocalStorage = (id, value) => {
   let todoList = getTodos()
-
   todoList = todoList.map(todo => {
     if (todo.id === id) {
       todo.value = value
@@ -34,16 +36,14 @@ const updateLocalStorage = (id, value) => {
   })
   localStorage.setItem('todoList', JSON.stringify(todoList))
 }
-
+// delete a todo object in localStorage
 const removeFromLocalStorage = id => {
   let todoList = getTodos()
-
   todoList = todoList.filter((todo) => {
     if (todo.id !== id) {
       return todo
     }
   })
-
   localStorage.setItem('todoList', JSON.stringify(todoList))
   console.log(localStorage.getItem('todoList'))
 }
@@ -125,14 +125,14 @@ function populateTodo(id, value)  {
   article.classList.add('todo')
   article.setAttribute('data-id', id)
   article.innerHTML = `
-  <p>
-  <input type="checkbox">
-  <span>${value}</span>
-  </p>
-  <button class="actions">
-  <i class="fa-solid fa-pen fa-green"></i>
-  <i class="fa-solid fa-trash-can"></i>
-  </button>
+    <p>
+    <input type="checkbox">
+    <span>${value}</span>
+    </p>
+    <button class="actions">
+    <i class="fa-solid fa-pen fa-green"></i>
+    <i class="fa-solid fa-trash-can"></i>
+    </button>
   `
   todoContainer.appendChild(article)
   clearAllBtn.classList.add('clear-all')
